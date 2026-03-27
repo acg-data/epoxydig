@@ -8,11 +8,11 @@ export function Footer() {
           {/* Brand */}
           <div>
             <a href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-brand-red rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">EF</span>
+              <div className="w-10 h-10 bg-brand-white rounded-lg flex items-center justify-center">
+                <span className="text-brand-black font-bold text-xl">EF</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-lg font-bold text-white leading-none">Epoxy Floor</span>
+                <span className="font-serif text-lg font-bold text-brand-white leading-none">Epoxy Floor</span>
                 <span className="text-[10px] font-bold tracking-wider uppercase text-brand-red">Digital</span>
               </div>
             </a>
@@ -23,7 +23,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-bold text-white mb-4">Contact Us</h4>
+            <h4 className="font-bold text-brand-white mb-4">Contact Us</h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-brand-grey text-sm">
                 <Phone className="w-4 h-4 text-brand-red" />
@@ -47,8 +47,8 @@ export function Footer() {
             © 2025 Epoxy Floor Digital. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-brand-grey">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-brand-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-brand-white transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

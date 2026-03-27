@@ -36,14 +36,14 @@ export function FAQ({ onCtaClick }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-20 lg:py-28 bg-brand-black border-t border-brand-grey-dark">
+    <section className="py-20 lg:py-28 bg-brand-cream border-t border-brand-grey-lighter">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-16">
-          <span className="inline-block text-brand-red font-bold text-sm uppercase tracking-wider mb-4">
+          <span className="inline-block bg-brand-black text-brand-white font-bold text-sm uppercase tracking-wider px-4 py-2 mb-4">
             FAQ
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-black mb-6">
             Common Questions
           </h2>
           <p className="text-lg text-brand-grey">
@@ -56,13 +56,13 @@ export function FAQ({ onCtaClick }: FAQProps) {
           {faqs.map((faq, index) => (
             <div 
               key={index}
-              className="bg-white/5 rounded-xl border border-brand-grey-dark overflow-hidden"
+              className="bg-brand-white rounded-xl border border-brand-grey-lighter overflow-hidden shadow-sm"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-brand-cream transition-colors"
               >
-                <span className="font-bold text-white pr-4">
+                <span className="font-bold text-brand-black pr-4">
                   {faq.question}
                 </span>
                 <ChevronDown 
@@ -73,7 +73,7 @@ export function FAQ({ onCtaClick }: FAQProps) {
               </button>
               {openIndex === index && (
                 <div className="px-6 pb-6">
-                  <p className="text-brand-grey-light leading-relaxed">
+                  <p className="text-brand-grey leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>
@@ -83,19 +83,19 @@ export function FAQ({ onCtaClick }: FAQProps) {
         </div>
 
         {/* Still have questions CTA */}
-        <div className="bg-white/5 rounded-2xl p-8 text-center border border-brand-grey-dark">
-          <div className="w-14 h-14 bg-brand-red/10 rounded-full flex items-center justify-center mx-auto mb-4">
-            <MessageCircle className="w-7 h-7 text-brand-red" />
+        <div className="bg-brand-black rounded-2xl p-8 text-center">
+          <div className="w-14 h-14 bg-brand-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <MessageCircle className="w-7 h-7 text-brand-white" />
           </div>
-          <h3 className="text-xl font-bold text-white mb-2">
+          <h3 className="text-xl font-bold text-brand-white mb-2">
             Still Have Questions?
           </h3>
-          <p className="text-brand-grey mb-6">
+          <p className="text-brand-grey-light mb-6">
             Book a free strategy call and we'll answer everything specific to your business.
           </p>
           <button 
             onClick={onCtaClick}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-brand-red text-white font-bold uppercase tracking-wider hover:bg-brand-red-dark transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-brand-white text-brand-black font-bold uppercase tracking-wider hover:bg-brand-cream transition-colors"
           >
             Book Free Call
             <ArrowRight className="w-4 h-4" />

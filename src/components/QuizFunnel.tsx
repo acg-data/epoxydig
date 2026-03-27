@@ -119,18 +119,18 @@ export function QuizFunnel({ onComplete }: QuizFunnelProps) {
 
   if (status === 'disqualified') {
     return (
-      <section id="quiz" className="py-20 lg:py-28 bg-brand-black">
+      <section id="quiz" className="py-20 lg:py-28 bg-brand-cream">
         <div className="max-w-2xl mx-auto px-6 text-center">
-          <div className="w-20 h-20 bg-brand-grey-dark rounded-full flex items-center justify-center mx-auto mb-6">
+          <div className="w-20 h-20 bg-brand-grey-lighter rounded-full flex items-center justify-center mx-auto mb-6">
             <X className="w-10 h-10 text-brand-grey" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-black mb-4">
             Thanks for your interest!
           </h2>
           <p className="text-lg text-brand-grey mb-6">
             Based on your responses, our system might not be the right fit for your business at this time. We specialize in helping established epoxy flooring companies scale their operations.
           </p>
-          <p className="text-brand-grey-light">
+          <p className="text-brand-grey">
             If you'd like to discuss other options, feel free to email us at hello@epoxyfloordigital.com
           </p>
         </div>
@@ -140,30 +140,30 @@ export function QuizFunnel({ onComplete }: QuizFunnelProps) {
 
   if (status === 'complete') {
     return (
-      <section id="quiz" className="py-20 lg:py-28 bg-brand-black">
+      <section id="quiz" className="py-20 lg:py-28 bg-brand-cream">
         <div className="max-w-2xl mx-auto px-6 text-center">
-          <div className="w-20 h-20 bg-brand-red rounded-full flex items-center justify-center mx-auto mb-6">
-            <Check className="w-10 h-10 text-white" />
+          <div className="w-20 h-20 bg-brand-black rounded-full flex items-center justify-center mx-auto mb-6">
+            <Check className="w-10 h-10 text-brand-white" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-black mb-4">
             Application Received!
           </h2>
           <p className="text-lg text-brand-grey mb-8">
             Thanks {contactInfo.name}! We'll review your application and reach out within 24 hours to schedule your free strategy call.
           </p>
-          <div className="bg-white/5 rounded-xl p-6 text-left border border-brand-grey-dark">
+          <div className="bg-brand-white rounded-xl p-6 text-left border border-brand-grey-lighter shadow-lg">
             <p className="text-brand-grey text-sm mb-4">What happens next:</p>
-            <ul className="space-y-3 text-white">
+            <ul className="space-y-3 text-brand-black">
               <li className="flex items-center gap-3">
-                <span className="w-8 h-8 bg-brand-red rounded-full flex items-center justify-center text-sm font-bold shrink-0">1</span>
+                <span className="w-8 h-8 bg-brand-black text-brand-white rounded-full flex items-center justify-center text-sm font-bold shrink-0">1</span>
                 We review your answers (within 24 hours)
               </li>
               <li className="flex items-center gap-3">
-                <span className="w-8 h-8 bg-brand-red rounded-full flex items-center justify-center text-sm font-bold shrink-0">2</span>
+                <span className="w-8 h-8 bg-brand-black text-brand-white rounded-full flex items-center justify-center text-sm font-bold shrink-0">2</span>
                 Schedule a 30-minute strategy call
               </li>
               <li className="flex items-center gap-3">
-                <span className="w-8 h-8 bg-brand-red rounded-full flex items-center justify-center text-sm font-bold shrink-0">3</span>
+                <span className="w-8 h-8 bg-brand-black text-brand-white rounded-full flex items-center justify-center text-sm font-bold shrink-0">3</span>
                 Get your custom growth plan
               </li>
             </ul>
@@ -174,14 +174,14 @@ export function QuizFunnel({ onComplete }: QuizFunnelProps) {
   }
 
   return (
-    <section id="quiz" className="py-20 lg:py-28 bg-brand-black">
+    <section id="quiz" className="py-20 lg:py-28 bg-brand-cream">
       <div className="max-w-2xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-12">
-          <span className="inline-block text-brand-red font-bold text-sm uppercase tracking-wider mb-4">
+          <span className="inline-block bg-brand-black text-brand-white font-bold text-sm uppercase tracking-wider px-4 py-2 mb-4">
             Step {Math.min(currentStep + 1, questions.length + 1)} of {questions.length + 1}
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-black mb-4">
             Check Your Eligibility
           </h2>
           <p className="text-brand-grey">
@@ -190,9 +190,9 @@ export function QuizFunnel({ onComplete }: QuizFunnelProps) {
         </div>
 
         {/* Progress Bar */}
-        <div className="w-full bg-brand-grey-dark rounded-full h-2 mb-12">
+        <div className="w-full bg-brand-grey-lighter rounded-full h-2 mb-12">
           <motion.div 
-            className="bg-brand-red h-2 rounded-full"
+            className="bg-brand-black h-2 rounded-full"
             initial={{ width: 0 }}
             animate={{ width: `${((currentStep) / (questions.length + 1)) * 100}%` }}
             transition={{ duration: 0.3 }}
@@ -200,7 +200,7 @@ export function QuizFunnel({ onComplete }: QuizFunnelProps) {
         </div>
 
         {/* Question Card */}
-        <div className="bg-white/5 rounded-2xl p-8 border border-brand-grey-dark">
+        <div className="bg-brand-white rounded-2xl p-8 border border-brand-grey-lighter shadow-lg">
           <AnimatePresence mode="wait" custom={direction}>
             {currentStep < questions.length ? (
               <motion.div
@@ -211,7 +211,7 @@ export function QuizFunnel({ onComplete }: QuizFunnelProps) {
                 exit={{ x: direction * -50, opacity: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <h3 className="text-xl font-bold text-white mb-6">
+                <h3 className="text-xl font-bold text-brand-black mb-6">
                   {questions[currentStep].q}
                 </h3>
 
@@ -220,20 +220,20 @@ export function QuizFunnel({ onComplete }: QuizFunnelProps) {
                     <button
                       key={idx}
                       onClick={() => handleSelect(idx)}
-                      className={`w-full p-4 text-left rounded-xl border transition-all ${
+                      className={`w-full p-4 text-left rounded-xl border-2 transition-all ${
                         answers[currentStep] === idx
-                          ? 'bg-brand-red/10 border-brand-red text-white'
-                          : 'bg-brand-black border-brand-grey-dark text-brand-grey hover:border-brand-grey hover:text-white'
+                          ? 'bg-brand-black/5 border-brand-black text-brand-black'
+                          : 'bg-brand-white border-brand-grey-lighter text-brand-grey-dark hover:border-brand-grey hover:text-brand-black'
                       }`}
                     >
                       <div className="flex items-center gap-3">
                         <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${
                           answers[currentStep] === idx
-                            ? 'border-brand-red bg-brand-red'
-                            : 'border-brand-grey'
+                            ? 'border-brand-black bg-brand-black'
+                            : 'border-brand-grey-lighter'
                         }`}>
                           {answers[currentStep] === idx && (
-                            <div className="w-2 h-2 rounded-full bg-white"></div>
+                            <div className="w-2 h-2 rounded-full bg-brand-white"></div>
                           )}
                         </div>
                         {opt}
@@ -249,8 +249,8 @@ export function QuizFunnel({ onComplete }: QuizFunnelProps) {
                     disabled={currentStep === 0}
                     className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-colors ${
                       currentStep === 0
-                        ? 'text-brand-grey-dark cursor-not-allowed'
-                        : 'text-brand-grey hover:text-white'
+                        ? 'text-brand-grey-lighter cursor-not-allowed'
+                        : 'text-brand-grey hover:text-brand-black'
                     }`}
                   >
                     <ArrowLeft className="w-4 h-4" />
@@ -261,8 +261,8 @@ export function QuizFunnel({ onComplete }: QuizFunnelProps) {
                     disabled={answers[currentStep] === undefined}
                     className={`flex items-center gap-2 px-8 py-3 rounded-lg font-bold uppercase tracking-wider transition-all ${
                       answers[currentStep] !== undefined
-                        ? 'bg-brand-red text-white hover:bg-brand-red-dark'
-                        : 'bg-brand-grey-dark text-brand-grey cursor-not-allowed'
+                        ? 'bg-brand-black text-brand-white hover:bg-brand-black-soft'
+                        : 'bg-brand-grey-lighter text-brand-grey cursor-not-allowed'
                     }`}
                   >
                     {currentStep === questions.length - 1 ? 'Continue' : 'Next'}
@@ -277,13 +277,13 @@ export function QuizFunnel({ onComplete }: QuizFunnelProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <h3 className="text-xl font-bold text-white mb-6">
+                <h3 className="text-xl font-bold text-brand-black mb-6">
                   Great! You're qualified. Enter your info to schedule your strategy call.
                 </h3>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-brand-grey mb-2">
+                    <label className="block text-sm font-medium text-brand-grey-dark mb-2">
                       Full Name *
                     </label>
                     <input
@@ -291,13 +291,13 @@ export function QuizFunnel({ onComplete }: QuizFunnelProps) {
                       required
                       value={contactInfo.name}
                       onChange={(e) => setContactInfo({ ...contactInfo, name: e.target.value })}
-                      className="w-full px-4 py-3 bg-brand-black border border-brand-grey-dark rounded-lg text-white focus:outline-none focus:border-brand-red"
+                      className="w-full px-4 py-3 bg-brand-cream border-2 border-brand-grey-lighter rounded-lg text-brand-black focus:outline-none focus:border-brand-black"
                       placeholder="John Smith"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-brand-grey mb-2">
+                    <label className="block text-sm font-medium text-brand-grey-dark mb-2">
                       Phone Number *
                     </label>
                     <input
@@ -305,13 +305,13 @@ export function QuizFunnel({ onComplete }: QuizFunnelProps) {
                       required
                       value={contactInfo.phone}
                       onChange={(e) => setContactInfo({ ...contactInfo, phone: e.target.value })}
-                      className="w-full px-4 py-3 bg-brand-black border border-brand-grey-dark rounded-lg text-white focus:outline-none focus:border-brand-red"
+                      className="w-full px-4 py-3 bg-brand-cream border-2 border-brand-grey-lighter rounded-lg text-brand-black focus:outline-none focus:border-brand-black"
                       placeholder="(555) 123-4567"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-brand-grey mb-2">
+                    <label className="block text-sm font-medium text-brand-grey-dark mb-2">
                       Email Address *
                     </label>
                     <input
@@ -319,7 +319,7 @@ export function QuizFunnel({ onComplete }: QuizFunnelProps) {
                       required
                       value={contactInfo.email}
                       onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
-                      className="w-full px-4 py-3 bg-brand-black border border-brand-grey-dark rounded-lg text-white focus:outline-none focus:border-brand-red"
+                      className="w-full px-4 py-3 bg-brand-cream border-2 border-brand-grey-lighter rounded-lg text-brand-black focus:outline-none focus:border-brand-black"
                       placeholder="john@company.com"
                     />
                   </div>
@@ -328,7 +328,7 @@ export function QuizFunnel({ onComplete }: QuizFunnelProps) {
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="flex-1 px-6 py-3 rounded-lg font-medium text-brand-grey hover:text-white transition-colors border border-brand-grey-dark"
+                      className="flex-1 px-6 py-3 rounded-lg font-medium text-brand-grey-dark hover:text-brand-black transition-colors border-2 border-brand-grey-lighter hover:border-brand-grey"
                     >
                       <ArrowLeft className="w-4 h-4 inline mr-2" />
                       Back
@@ -336,11 +336,11 @@ export function QuizFunnel({ onComplete }: QuizFunnelProps) {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="flex-[2] px-8 py-3 bg-brand-red text-white font-bold uppercase tracking-wider rounded-lg hover:bg-brand-red-dark transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
+                      className="flex-[2] px-8 py-3 bg-brand-black text-brand-white font-bold uppercase tracking-wider rounded-lg hover:bg-brand-black-soft transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                       {isSubmitting ? (
                         <>
-                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          <div className="w-5 h-5 border-2 border-brand-white border-t-transparent rounded-full animate-spin"></div>
                           Submitting...
                         </>
                       ) : (

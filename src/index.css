@@ -8,7 +8,7 @@
   }
   
   body {
-    @apply bg-brand-cream text-brand-grey-dark font-sans antialiased;
+    @apply bg-brand-cream text-brand-black-soft font-sans antialiased;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -18,6 +18,6 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-red to-brand-red-dark;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-black to-brand-black-soft;
   }
 }

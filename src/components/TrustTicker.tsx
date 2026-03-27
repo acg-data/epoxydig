@@ -14,10 +14,10 @@ export function TrustTicker() {
   const doubledStats = [...stats, ...stats];
 
   return (
-    <section className="relative bg-brand-black border-y border-brand-grey-dark overflow-hidden">
+    <section className="relative bg-brand-white border-y border-brand-grey-lighter overflow-hidden">
       {/* Gradient overlays for fade effect */}
-      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-brand-black to-transparent z-10 pointer-events-none"></div>
-      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-brand-black to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-brand-white to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-brand-white to-transparent z-10 pointer-events-none"></div>
 
       <div className="py-8 flex">
         <motion.div
@@ -36,11 +36,11 @@ export function TrustTicker() {
         >
           {doubledStats.map((stat, index) => (
             <div key={index} className="flex items-center gap-4 shrink-0">
-              <div className="text-brand-red text-3xl font-bold">{stat.value}</div>
+              <div className="text-brand-black text-3xl font-bold">{stat.value}</div>
               <div className="text-brand-grey text-sm uppercase tracking-wider font-medium whitespace-nowrap">
                 {stat.label}
               </div>
-              <div className="w-2 h-2 rounded-full bg-brand-grey-dark"></div>
+              <div className="w-2 h-2 rounded-full bg-brand-grey-lighter"></div>
             </div>
           ))}
         </motion.div>

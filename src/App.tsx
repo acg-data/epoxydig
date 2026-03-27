@@ -31,7 +31,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-brand-black font-sans text-brand-grey">
+    <div className="min-h-screen bg-brand-cream font-sans text-brand-black-soft">
       <Nav onCtaClick={scrollToQuiz} />
       
       <main id="main-content">
@@ -40,8 +40,8 @@ function App() {
         {/* Video VSL Section */}
         <div ref={vslRef}>
           <Suspense fallback={
-            <div className="h-96 flex items-center justify-center bg-brand-black" role="status" aria-label="Loading video section">
-              <div className="w-24 h-4 bg-brand-grey-dark rounded animate-pulse"></div>
+            <div className="h-96 flex items-center justify-center bg-brand-cream" role="status" aria-label="Loading video section">
+              <div className="w-24 h-4 bg-brand-grey-lighter rounded animate-pulse"></div>
             </div>
           }>
             <VideoVSL onCtaClick={scrollToQuiz} />
@@ -58,18 +58,18 @@ function App() {
 
       {/* Sticky Bottom Bar */}
       <div 
-        className={`fixed bottom-0 left-0 right-0 z-40 bg-brand-black/95 backdrop-blur-md border-t border-brand-grey-dark px-6 py-3 flex flex-col md:flex-row justify-between items-center gap-3 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`fixed bottom-0 left-0 right-0 z-40 bg-brand-white/95 backdrop-blur-md border-t border-brand-grey-lighter px-6 py-3 flex flex-col md:flex-row justify-between items-center gap-3 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           showSticky ? 'translate-y-0' : 'translate-y-full'
         }`}
         role="complementary"
         aria-label="Call to action"
       >
         <div className="text-[13px] font-medium text-brand-grey text-center md:text-left">
-          Ready to scale your epoxy business? <strong className="text-white">Limited spots for Q1 2025.</strong>
+          Ready to scale your epoxy business? <strong className="text-brand-black">Limited spots for Q1 2025.</strong>
         </div>
         <button 
           onClick={scrollToQuiz}
-          className="text-[11px] font-bold tracking-widest uppercase text-brand-black bg-white px-6 py-2.5 hover:bg-brand-grey-lighter transition-all duration-200 transform hover:-translate-y-px shadow-sm"
+          className="text-[11px] font-bold tracking-widest uppercase text-brand-white bg-brand-black px-6 py-2.5 hover:bg-brand-black-soft transition-all duration-200 transform hover:-translate-y-px shadow-sm"
         >
           Check Eligibility <span aria-hidden="true">&rarr;</span>
         </button>

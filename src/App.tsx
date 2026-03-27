@@ -1,63 +1,79 @@
-import { useState } from 'react';
+import { useState, useEffect, lazy, Suspense, useRef } from 'react';
 import { Nav } from './components/Nav';
 import { Hero } from './components/Hero';
-import { Services } from './components/Services';
+import { TrustTicker } from './components/TrustTicker';
 import { Results } from './components/Results';
-import { HowItWorks } from './components/HowItWorks';
-import { Testimonials } from './components/Testimonials';
-import { Pricing } from './components/Pricing';
+import { QuizFunnel } from './components/QuizFunnel';
 import { FAQ } from './components/FAQ';
-import { ContactQuiz } from './components/ContactQuiz';
 import { Footer } from './components/Footer';
+
+// Lazy load VideoVSL for performance
+const VideoVSL = lazy(() => import('./components/VideoVSL').then(module => ({ default: module.VideoVSL })));
 
 function App() {
   const [showSticky, setShowSticky] = useState(false);
+  const vslRef = useRef<HTMLDivElement>(null);
 
-  // Show sticky bar after scrolling
-  if (typeof window !== 'undefined') {
-    window.addEventListener('scroll', () => {
+  useEffect(() => {
+    const handleScroll = () => {
       setShowSticky(window.scrollY > 600);
-    }, { passive: true });
-  }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToVSL = () => {
+    vslRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToQuiz = () => {
+    document.getElementById('quiz')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen bg-brand-cream">
-      <Nav onCtaClick={scrollToContact} />
+    <div className="min-h-screen bg-brand-black font-sans text-brand-grey">
+      <Nav onCtaClick={scrollToQuiz} />
       
-      <main>
-        <Hero onCtaClick={scrollToContact} />
-        <Services />
+      <main id="main-content">
+        <Hero onWatchVideo={scrollToVSL} />
+        
+        {/* Video VSL Section */}
+        <div ref={vslRef}>
+          <Suspense fallback={
+            <div className="h-96 flex items-center justify-center bg-brand-black" role="status" aria-label="Loading video section">
+              <div className="w-24 h-4 bg-brand-grey-dark rounded animate-pulse"></div>
+            </div>
+          }>
+            <VideoVSL onCtaClick={scrollToQuiz} />
+          </Suspense>
+        </div>
+        
+        <TrustTicker />
         <Results />
-        <HowItWorks />
-        <Testimonials />
-        <Pricing onCtaClick={scrollToContact} />
-        <FAQ onCtaClick={scrollToContact} />
-        <ContactQuiz />
+        <QuizFunnel onComplete={() => {}} />
+        <FAQ onCtaClick={scrollToQuiz} />
       </main>
 
       <Footer />
 
       {/* Sticky Bottom Bar */}
-      {showSticky && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-brand-black border-t border-white/10 px-6 py-4">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-white text-center md:text-left">
-              <span className="text-sm font-bold">Ready to grow your epoxy business?</span>
-              <span className="text-brand-grey-light text-sm ml-2">Limited spots available for Q1 2025.</span>
-            </div>
-            <button 
-              onClick={scrollToContact}
-              className="w-full md:w-auto px-8 py-3 bg-brand-red text-white font-bold uppercase tracking-wider hover:bg-brand-red-dark transition-colors"
-            >
-              Get Free Strategy Call
-            </button>
-          </div>
+      <div 
+        className={`fixed bottom-0 left-0 right-0 z-40 bg-brand-black/95 backdrop-blur-md border-t border-brand-grey-dark px-6 py-3 flex flex-col md:flex-row justify-between items-center gap-3 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          showSticky ? 'translate-y-0' : 'translate-y-full'
+        }`}
+        role="complementary"
+        aria-label="Call to action"
+      >
+        <div className="text-[13px] font-medium text-brand-grey text-center md:text-left">
+          Ready to scale your epoxy business? <strong className="text-white">Limited spots for Q1 2025.</strong>
         </div>
-      )}
+        <button 
+          onClick={scrollToQuiz}
+          className="text-[11px] font-bold tracking-widest uppercase text-brand-black bg-white px-6 py-2.5 hover:bg-brand-grey-lighter transition-all duration-200 transform hover:-translate-y-px shadow-sm"
+        >
+          Check Eligibility <span aria-hidden="true">&rarr;</span>
+        </button>
+      </div>
     </div>
   );
 }
